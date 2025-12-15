@@ -37,8 +37,9 @@ wheels/
 .DS_Store
 Thumbs.db
 
-# Data files (for testing)
+# Data files (for testing, but keep demo file)
 *.csv
+!demo_customer_data.csv
 *.xlsx
 *.json
 test_data/

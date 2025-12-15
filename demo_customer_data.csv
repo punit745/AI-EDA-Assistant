@@ -1,0 +1,206 @@
+customer_id,age,annual_income,credit_score,purchase_amount,months_as_customer,num_purchases,satisfaction_rating,region,membership_tier,product_category
+1,56,56941.55,389,308.55,60,21,3.6,South,Bronze,Clothing
+2,69,74372.9,717,109.87,43,19,3.6,West,Gold,Clothing
+3,46,40958.94,414,26.46,76,48,2.5,South,Silver,Books
+4,32,48446.76,495,65.18,108,19,3.2,Central,Bronze,Sports
+5,60,47157.84,800,537.46,100,36,2.9,East,Silver,Books
+6,25,,792,258.11,112,29,4.5,North,Gold,Electronics
+7,38,60922.41,374,53.5,68,18,3.1,North,Bronze,Sports
+8,56,60221.11,712,59.69,5,2,,West,Bronze,Home & Garden
+9,36,55102.27,675,11.28,37,1,2.6,South,Bronze,Electronics
+10,40,50308.26,719,1528.17,72,47,3.3,West,Gold,Electronics
+11,28,26692.59,576,260.68,106,5,4.2,East,Silver,Home & Garden
+12,28,46587.09,693,76.36,113,20,3.2,West,Silver,Electronics
+13,41,48145.71,756,114.45,92,11,,North,Gold,Sports
+14,70,38954.45,491,6.65,31,42,4.0,North,Gold,Books
+15,53,51774.29,398,50.2,9,2,3.1,Central,Silver,Electronics
+16,57,63081.02,847,446.45,118,3,2.7,Central,Gold,Sports
+17,41,92723.72,395,292.32,51,23,4.5,East,Bronze,Clothing
+18,20,58491.56,489,133.87,29,12,2.7,South,Bronze,Sports
+19,39,60151.01,336,88.44,78,20,2.8,West,Bronze,Books
+20,70,,668,234.09,40,5,5.0,East,Bronze,Sports
+21,19,16624.58,824,64.22,41,37,1.0,Central,Silver,Home & Garden
+22,41,54469.72,578,12.21,86,38,1.7,West,Platinum,Books
+23,61,56204.6,516,89.35,11,30,2.5,Central,Bronze,Clothing
+24,47,104264.84,572,438.06000000000006,23,9,4.7,West,Bronze,Home & Garden
+25,55,51152.78,361,346.27,1,34,1.3,South,Silver,Sports
+26,19,61030.95,641,15.97,46,44,1.0,East,Platinum,Books
+27,38,54305.76,696,77.67,101,35,1.2,West,Bronze,Clothing
+28,50,31626.44,318,82.24,21,22,1.4,North,Silver,Home & Garden
+29,29,77856.46,476,24.01,90,44,1.2,North,Bronze,Clothing
+30,39,70038.66,695,161.61,110,24,2.9,West,Bronze,Sports
+31,61,70820.64,744,220.71,36,17,3.3,West,Platinum,Clothing
+32,42,36812.25,532,63.51,54,10,2.1,West,Platinum,Electronics
+33,66,83055.89,375,1060.09,87,30,2.6,North,Bronze,Home & Garden
+34,44,26962.98,564,61.36,57,46,1.4,North,Platinum,Clothing
+35,59,,754,52.67,1,23,2.3,West,Silver,Sports
+36,45,98809.11,683,50.87,63,32,3.1,Central,Gold,Sports
+37,33,35189.27,805,33.83,54,17,3.9,Central,Silver,Clothing
+38,32,43674.05,666,46.02,55,17,1.0,South,Silver,Sports
+39,64,56993.03,443,16.1,115,14,2.9,East,Silver,Books
+40,68,44930.49,368,71.53,40,9,,Central,Silver,Books
+41,61,23986.73,398,96.44,15,40,4.4,North,Bronze,Books
+42,72,56371.26,695,5.82,21,2,3.9,Central,Bronze,Electronics
+43,69,33753.93,324,238.95000000000002,47,45,,South,Bronze,Clothing
+44,74,64471.85,768,94.69,73,25,2.1,South,Gold,Electronics
+45,20,,783,166.92,53,39,4.6,East,Bronze,Sports
+46,54,85998.69,450,382.05,9,9,1.2,Central,Silver,Electronics
+47,68,39334.93,443,250.04,74,22,1.4,North,Platinum,Sports
+48,24,48558.77,338,42.76,52,43,2.6,North,Bronze,Sports
+49,38,71270.34,408,37.2,57,46,1.5,West,Silver,Home & Garden
+50,26,30382.71,341,180.44,117,4,4.8,North,Silver,Books
+51,56,59549.2,485,46.68,26,26,4.2,East,Gold,Sports
+52,35,81142.86,697,20.62,41,29,2.0,East,Bronze,Home & Garden
+53,21,22850.34,522,4663.7699999999995,35,45,,North,Silver,Books
+54,42,58692.68,432,62.0,63,34,4.9,North,Gold,Sports
+55,31,60197.66,462,42.44,116,23,4.5,West,Platinum,Sports
+56,67,70636.46,514,19.44,25,37,3.4,North,Silver,Electronics
+57,26,30260.99,534,250.06,90,11,4.6,West,Silver,Electronics
+58,43,28590.87,308,27.51,75,6,5.0,West,Silver,Books
+59,70,65438.83,373,93.16,38,18,4.0,North,Gold,Sports
+60,19,60939.69,791,287.82,2,21,1.3,South,Silver,Clothing
+61,37,60009.86,552,28.03,7,42,2.6,South,Bronze,Electronics
+62,45,61928.96,529,99.03,82,36,4.4,West,Platinum,Books
+63,64,41399.51,818,560.34,91,41,1.9,North,Silver,Sports
+64,24,59645.07,473,4.72,34,38,4.3,South,Silver,Sports
+65,61,60861.45,467,34.04,91,34,1.5,North,Bronze,Clothing
+66,25,40712.97,469,30.4,17,17,1.2,North,Silver,Books
+67,64,92315.49,692,71.93,43,37,2.5,North,Bronze,Sports
+68,52,64476.66,493,85.0,59,25,1.1,Central,Silver,Electronics
+69,31,31173.93,816,25.19,108,38,4.8,North,Bronze,Clothing
+70,34,68131.07,328,41.05,51,12,4.3,Central,Silver,Books
+71,53,35506.37,464,35.59,54,23,4.2,West,Platinum,Clothing
+72,67,70741.69,721,59.09,24,42,3.5,South,Bronze,Electronics
+73,57,78171.91,638,116.96,25,22,1.9,South,Platinum,Books
+74,21,,795,268.45,71,21,3.1,South,Silver,Clothing
+75,19,74267.52,664,319.38,52,27,3.4,South,Gold,Home & Garden
+76,23,,641,197.23,70,31,3.1,South,Gold,Electronics
+77,71,71441.2,799,31.54,117,6,2.0,South,Silver,Electronics
+78,59,92935.86,810,89.66,88,27,3.1,South,Gold,Electronics
+79,21,50092.24,626,1554.94,33,40,,West,Gold,Home & Garden
+80,71,39925.28,516,304.13,49,34,5.0,North,Silver,Home & Garden
+81,46,37209.71,600,53.06,29,12,4.6,East,Bronze,Sports
+82,35,38683.79,431,600.91,63,45,2.9,Central,Silver,Clothing
+83,43,53457.97,369,169.5,107,7,3.5,East,Gold,Sports
+84,61,61823.04,551,40.36,22,10,4.0,East,Gold,Clothing
+85,51,60533.82,714,480.52,26,45,1.1,North,Gold,Home & Garden
+86,27,71543.66,744,18.7,28,17,4.6,North,Silver,Home & Garden
+87,53,55260.04,481,9.06,114,26,4.4,North,Gold,Sports
+88,31,84070.68,466,278.53,85,21,,South,Bronze,Books
+89,48,49706.86,390,93.06,49,28,2.6,West,Silver,Sports
+90,65,109403.38,830,104.88,71,46,2.1,South,Bronze,Clothing
+91,32,67513.35,338,58.34,81,2,2.9,West,Bronze,Sports
+92,25,37856.85,425,67.61,84,43,1.2,West,Bronze,Electronics
+93,31,33582.15,750,51.95,105,1,4.4,East,Bronze,Clothing
+94,40,64649.45,472,42.47,49,36,1.1,East,Silver,Clothing
+95,74,50530.74,519,56.92,20,26,2.3,West,Bronze,Books
+96,57,69280.01,357,54.81,118,29,4.7,West,Silver,Home & Garden
+97,38,64464.75,775,33.3,86,21,3.9,South,Bronze,Clothing
+98,33,53543.42,755,46.8,92,11,2.1,South,Bronze,Home & Garden
+99,62,38064.13,660,4.47,63,40,2.0,East,Bronze,Sports
+100,35,24703.06,300,204.71,61,11,1.0,North,Bronze,Electronics
+101,64,46069.7,686,143.78,104,36,3.8,West,Silver,Books
+102,70,72127.98,647,81.3,49,49,1.2,South,Silver,Home & Garden
+103,41,59281.87,489,119.68,71,39,3.1,East,Silver,Clothing
+104,43,30085.22,804,125.0,1,40,4.8,South,Silver,Home & Garden
+105,42,58463.62,490,37.76,96,35,,West,Bronze,Clothing
+106,62,62706.35,807,47.51,13,34,4.6,West,Gold,Home & Garden
+107,58,,668,169.69,94,47,5.0,Central,Silver,Clothing
+108,46,58074.5,708,115.47,87,24,1.2,North,Silver,Sports
+109,32,56164.17,416,1045.22,51,22,4.5,Central,Bronze,Clothing
+110,62,32140.59,433,628.62,56,5,3.1,East,Bronze,Clothing
+111,18,62155.75,357,275.78,83,33,4.6,South,Bronze,Electronics
+112,42,66215.69,472,36.09,62,36,3.3,East,Bronze,Clothing
+113,24,76661.02,448,45.72,32,47,3.6,West,Silver,Electronics
+114,26,76076.04,379,27.05,30,20,,Central,Silver,Books
+115,41,27446.61,512,125.93,29,19,4.5,Central,Silver,Electronics
+116,18,36243.5,502,3.36,49,35,3.9,Central,Gold,Sports
+117,61,65300.71,528,51.92,45,43,3.1,East,Gold,Electronics
+118,25,65275.72,526,62.3,93,17,4.5,West,Gold,Books
+119,41,65300.95,831,14.45,30,45,2.0,South,Platinum,Sports
+120,28,132054.63,740,234.46,16,43,1.6,South,Bronze,Home & Garden
+121,68,66417.81,701,22.94,40,34,1.6,East,Bronze,Home & Garden
+122,34,77711.31,346,124.13,19,9,2.3,Central,Bronze,Electronics
+123,25,74080.04,532,2541.56,18,26,2.0,North,Silver,Electronics
+124,52,68027.83,604,13.02,1,2,4.7,East,Gold,Books
+125,52,48694.62,825,75.32,78,9,1.4,East,Bronze,Books
+126,50,70179.38,442,55.2,115,9,3.8,West,Platinum,Clothing
+127,22,39543.5,714,43.71,47,40,1.8,South,Bronze,Books
+128,59,,812,224.15,114,17,4.5,East,Platinum,Clothing
+129,56,45292.73,672,339.54,66,1,4.8,East,Bronze,Sports
+130,58,56637.48,558,227.23,118,25,2.9,Central,Bronze,Electronics
+131,45,101293.17,770,37.79,92,43,4.5,Central,Silver,Sports
+132,24,17654.7,311,1670.06,113,40,1.0,North,Bronze,Books
+133,26,68725.2,629,10.76,114,42,4.3,West,Bronze,Sports
+134,25,22745.68,657,78.21000000000001,94,25,1.9,North,Bronze,Sports
+135,29,45561.36,707,110.35,38,39,4.6,Central,Gold,Sports
+136,51,76779.01,672,100.21,51,35,1.0,South,Silver,Books
+137,50,56285.6,307,161.69,63,3,3.2,Central,Bronze,Sports
+138,65,33445.1,421,599.54,4,37,4.0,West,Silver,Clothing
+139,72,40693.93,647,77.96,1,44,2.0,Central,Gold,Books
+140,40,68591.95,389,103.18,8,44,1.8,West,Bronze,Sports
+141,41,40392.67,615,44.11,29,30,1.3,West,Silver,Books
+142,54,59329.17,477,182.36,55,38,2.3,West,Bronze,Home & Garden
+143,52,,839,61.43,103,34,3.2,West,Bronze,Clothing
+144,61,41967.99,340,61.38,3,12,1.5,West,Silver,Sports
+145,57,97878.88,801,172.81,32,19,2.5,South,Bronze,Home & Garden
+146,39,67678.38,444,311.66,10,37,1.0,North,Silver,Home & Garden
+147,44,14497.15,500,6.36,74,44,4.3,East,Gold,Books
+148,52,,760,138.79,83,49,1.5,North,Bronze,Home & Garden
+149,18,41764.27,846,65.09,110,17,2.1,West,Silver,Clothing
+150,52,72048.67,552,280.66,34,10,1.1,South,Bronze,Clothing
+151,54,39149.59,689,66.68,97,49,2.7,Central,Platinum,Electronics
+152,64,52705.27,555,428.92,87,47,4.4,South,Silver,Clothing
+153,31,,749,39.98,55,12,2.6,West,Gold,Home & Garden
+154,20,72315.1,309,6.19,92,16,1.7,South,Silver,Clothing
+155,18,30994.07,541,317.96,32,24,4.0,South,Bronze,Books
+156,22,48309.98,550,32.71,50,19,4.2,West,Silver,Electronics
+157,43,45501.09,304,13.51,7,8,1.7,South,Platinum,Home & Garden
+158,72,41933.42,418,91.77,93,31,4.1,East,Silver,Electronics
+159,31,90309.08,673,67.56,8,21,4.8,East,Gold,Home & Garden
+160,56,63099.63,364,241.71,65,17,1.7,South,Gold,Books
+161,44,29782.32,445,262.67,57,23,4.1,Central,Bronze,Electronics
+162,26,73357.24,523,100.96,119,37,3.8,West,Bronze,Sports
+163,32,97443.12,538,31.13,67,16,2.9,East,Silver,Home & Garden
+164,32,75649.31,476,127.02,88,6,1.2,Central,Silver,Sports
+165,43,24612.6,581,109.75,87,8,1.3,South,Gold,Electronics
+166,59,45315.32,362,178.17,59,25,4.4,Central,Platinum,Sports
+167,30,80338.22,516,31.51,72,18,5.0,North,Bronze,Sports
+168,68,40846.61,760,55.68,54,25,3.7,East,Bronze,Electronics
+169,49,63876.39,404,165.88,111,12,2.8,South,Gold,Books
+170,56,,398,402.14,101,15,3.6,West,Bronze,Sports
+171,66,36461.39,810,286.89,67,26,3.4,South,Gold,Sports
+172,69,53809.49,684,99.33,51,41,2.5,West,Silver,Books
+173,49,-9825.35,704,50.16,97,45,1.3,South,Silver,Sports
+174,21,34512.25,817,146.14,92,26,4.3,Central,Bronze,Sports
+175,47,49948.64,775,24.3,111,47,2.5,Central,Silver,Sports
+176,54,30044.34,736,101.31,8,32,4.3,Central,Silver,Clothing
+177,40,87648.23,322,550.99,34,10,2.0,North,Silver,Books
+178,56,26397.17,757,145.83,35,16,1.0,West,Bronze,Sports
+179,62,,382,59.32,96,7,1.6,Central,Gold,Books
+180,32,57614.81,444,243.46,88,17,2.9,North,Gold,Home & Garden
+181,60,83825.47,384,421.73,78,23,,West,Bronze,Home & Garden
+182,46,26282.76,377,52.8,32,26,1.4,South,Bronze,Sports
+183,53,78263.28,756,53.9,46,21,4.4,North,Bronze,Books
+184,30,55204.66,300,46.38,107,22,3.1,East,Silver,Books
+185,49,35369.83,350,286.18,16,7,4.3,North,Silver,Books
+186,24,64242.07,745,289.53,68,14,2.2,North,Silver,Clothing
+187,68,58981.19,748,474.89,116,15,4.4,West,Bronze,Home & Garden
+188,39,42995.66,787,301.97,37,7,4.1,South,Bronze,Books
+189,45,,333,12.7,54,9,1.9,East,Silver,Books
+190,19,,647,126.11,85,48,1.5,Central,Silver,Clothing
+191,59,57270.35,394,25.28,14,8,4.5,Central,Platinum,Clothing
+192,62,68242.61,371,48.64,95,23,4.9,North,Bronze,Books
+193,74,86720.34,453,110.47,55,29,1.1,West,Silver,Electronics
+194,70,30243.69,549,245.35,48,18,3.9,West,Silver,Books
+195,23,97660.67,737,30.91,82,31,4.6,Central,Silver,Books
+196,45,15958.24,417,5.53,7,30,4.4,East,Gold,Clothing
+197,45,51964.3,605,111.79,74,39,4.9,South,Silver,Clothing
+198,61,66766.34,567,2147.99,7,35,4.0,East,Platinum,Books
+199,61,60619.84,353,70.57,33,18,2.8,South,Bronze,Books
+200,37,42546.01,535,95.23,23,42,2.2,Central,Bronze,Books
+96,57,69280.01,357,54.81,118,29,4.7,West,Silver,Home & Garden
+16,57,63081.02,847,446.45,118,3,2.7,Central,Gold,Sports
+31,61,70820.64,744,220.71,36,17,3.3,West,Platinum,Clothing
+159,31,90309.08,673,67.56,8,21,4.8,East,Gold,Home & Garden
+129,56,45292.73,672,339.54,66,1,4.8,East,Bronze,Sports
