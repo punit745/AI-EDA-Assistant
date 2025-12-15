@@ -84,11 +84,13 @@ An intelligent, AI-driven Python application for automated Exploratory Data Anal
 
 ## 🚀 Installation
 
+> **📖 For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md)**
+
 ### Prerequisites
 - Python 3.8 or higher
 - pip package manager
 
-### Setup
+### Quick Setup
 
 1. **Clone the repository**:
 ```bash
@@ -107,7 +109,23 @@ source venv/bin/activate  # On Windows: venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
+4. **Run the application**:
+```bash
+streamlit run app.py
+```
+
+5. **Open browser** and navigate to `http://localhost:8501`
+
 ## 💻 Usage
+
+### Using the Demo Dataset
+
+A demo customer dataset (`demo_customer_data.csv`) is included with:
+- 205 rows of realistic customer data
+- Missing values, outliers, and duplicates for testing
+- 11 columns (numeric and categorical)
+
+**See [DEMO_DATA_README.md](DEMO_DATA_README.md) for dataset details.**
 
 ### Running the Application
 
