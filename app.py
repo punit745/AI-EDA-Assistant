@@ -283,7 +283,7 @@ def show_preprocessing():
                 st.session_state.code_generator.add_missing_value_handling(strategy, columns)
                 
                 st.success("✅ Missing values handled successfully!")
-                st.experimental_rerun()
+                st.rerun()
     
     elif task == "Handle Outliers":
         st.subheader("Handle Outliers")
@@ -322,7 +322,7 @@ def show_preprocessing():
             st.session_state.code_generator.add_outlier_handling(method, strategy, columns)
             
             st.success("✅ Outliers handled successfully!")
-            st.experimental_rerun()
+            st.rerun()
     
     elif task == "Normalize/Scale Data":
         st.subheader("Normalize/Scale Data")
@@ -346,7 +346,7 @@ def show_preprocessing():
             st.session_state.code_generator.add_normalization(method, columns)
             
             st.success("✅ Data normalized successfully!")
-            st.experimental_rerun()
+            st.rerun()
     
     # Show operations log
     if st.session_state.operations_log:
@@ -360,7 +360,7 @@ def show_preprocessing():
         st.session_state.operations_log = []
         st.session_state.code_generator.clear()
         st.success("Data reset to original!")
-        st.experimental_rerun()
+        st.rerun()
 
 
 def show_data_integrity():
@@ -384,7 +384,7 @@ def show_data_integrity():
             df_clean = integrity.remove_duplicates()
             st.session_state.df = df_clean
             st.success(f"✅ Removed {dup_info['total_duplicates']} duplicate rows!")
-            st.experimental_rerun()
+            st.rerun()
     
     # Data Types
     st.subheader("📊 Data Type Consistency")
