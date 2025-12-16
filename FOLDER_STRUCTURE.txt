@@ -1,0 +1,56 @@
+AI-EDA-Assistant/
+│
+├── 📱 Main Application
+│   └── app.py                      # Streamlit web application (main entry point)
+│
+├── 🔧 Core Modules
+│   ├── data_handler.py             # File upload & parsing (CSV, Excel, JSON, TXT)
+│   ├── eda.py                      # Statistical analysis & visualizations
+│   ├── preprocessing.py            # Data cleaning & transformation
+│   ├── data_integrity.py           # Data quality checks
+│   ├── model_training.py           # Machine learning models
+│   ├── code_generator.py           # Python code export
+│   ├── report_generator.py         # PDF report generation
+│   └── utils.py                    # Helper functions
+│
+├── 📊 Demo Data
+│   ├── demo_customer_data.csv      # Sample dataset (205 rows, 11 columns)
+│   └── DEMO_DATA_README.md         # Dataset documentation
+│
+├── 📚 Documentation
+│   ├── README.md                   # Main project documentation
+│   ├── SETUP_GUIDE.md              # ⭐ Step-by-step setup instructions
+│   ├── USER_GUIDE.md               # Detailed feature guide
+│   ├── QUICKSTART.md               # Quick reference
+│   ├── EXAMPLES.md                 # Sample workflows
+│   ├── CONTRIBUTING.md             # Contribution guidelines
+│   ├── PROJECT_SUMMARY.md          # Technical overview
+│   └── FOLDER_STRUCTURE.txt        # This file
+│
+├── 🚀 Deployment
+│   ├── requirements.txt            # Python dependencies
+│   ├── Dockerfile                  # Docker container config
+│   ├── docker-compose.yml          # Docker Compose setup
+│   ├── Procfile                    # Heroku deployment
+│   └── runtime.txt                 # Python version
+│
+├── ⚙️ Configuration
+│   ├── .gitignore                  # Git ignore rules
+│   ├── .streamlit/
+│   │   └── config.toml            # Streamlit settings
+│   └── LICENSE                     # MIT License
+│
+└── 📝 Quick Start Commands
+    │
+    ├── Install: pip install -r requirements.txt
+    ├── Run:     streamlit run app.py
+    └── Demo:    Upload demo_customer_data.csv in the app
+
+---
+
+Key Files to Know:
+- 🎯 Start here: SETUP_GUIDE.md
+- 📊 Demo data:  demo_customer_data.csv
+- 🚀 Run app:    streamlit run app.py
+- 📖 Features:   USER_GUIDE.md
+- 🐛 Issues:     Check SETUP_GUIDE.md troubleshooting section

@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  streamlit:
+    build: .
+    container_name: ai-eda-assistant
+    ports:
+      - "8501:8501"
+    volumes:
+      - ./data:/app/data
+    environment:
+      - STREAMLIT_SERVER_HEADLESS=true
+      - STREAMLIT_SERVER_PORT=8501
+    restart: unless-stopped
