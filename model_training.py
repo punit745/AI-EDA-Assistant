@@ -18,7 +18,12 @@ from sklearn.metrics import (
 )
 from typing import Dict, Tuple, Optional, List
 import warnings
-warnings.filterwarnings('ignore')
+
+# Suppress specific warnings
+warnings.filterwarnings('ignore', category=FutureWarning)
+warnings.filterwarnings('ignore', category=UserWarning, module='sklearn')
+warnings.filterwarnings('ignore', category=UserWarning, module='xgboost')
+warnings.filterwarnings('ignore', category=UserWarning, module='lightgbm')
 
 # Import gradient boosting libraries
 try:

@@ -20,7 +20,10 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 from typing import Dict, List, Optional, Tuple
 import warnings
-warnings.filterwarnings('ignore')
+
+# Suppress specific warnings
+warnings.filterwarnings('ignore', category=FutureWarning)
+warnings.filterwarnings('ignore', category=UserWarning, module='statsmodels')
 
 
 class StatisticalAnalysis:
@@ -75,7 +78,7 @@ class StatisticalAnalysis:
                 'iqr': data.quantile(0.75) - data.quantile(0.25),
                 'skewness': data.skew(),
                 'kurtosis': data.kurtosis(),
-                'cv': (data.std() / data.mean() * 100) if data.mean() != 0 else np.nan  # coefficient of variation
+                'cv': (data.std() / data.mean() * 100) if abs(data.mean()) > 1e-10 else np.nan  # coefficient of variation
             }
         
         return pd.DataFrame(stats_dict).T
@@ -669,5 +672,5 @@ class StatisticalAnalysis:
             'mode': data.mode()[0] if not data.mode().empty else np.nan,
             'range': (data.min(), data.max()),
             'iqr': data.quantile(0.75) - data.quantile(0.25),
-            'coefficient_of_variation': (data.std() / data.mean() * 100) if data.mean() != 0 else np.nan
+            'coefficient_of_variation': (data.std() / data.mean() * 100) if abs(data.mean()) > 1e-10 else np.nan
         }
