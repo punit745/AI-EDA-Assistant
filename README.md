@@ -42,7 +42,33 @@ An intelligent, AI-driven Python application for automated Exploratory Data Anal
   - Scatter matrices for feature relationships
   - Missing value visualizations
 
-### 4. **Data Preprocessing**
+### 4. **Advanced Statistical Analysis Suite** ⭐ NEW
+- **Descriptive Statistics**: 
+  - Comprehensive metrics: mean, median, mode, min, max, std, variance
+  - Skewness, kurtosis, quantiles, IQR, coefficient of variation
+  - Multi-column selection and export
+- **Inferential Statistics**:
+  - Independent and one-sample t-tests
+  - ANOVA (Analysis of Variance)
+  - Chi-square test of independence
+  - Confidence interval calculations
+- **Correlation & Causality Analysis**:
+  - Pearson, Spearman, and Kendall correlations
+  - Interactive correlation heatmaps
+  - Pairwise correlation matrices
+  - Granger causality test for time series
+- **Time Series Analysis**:
+  - Seasonal decomposition (additive/multiplicative)
+  - Stationarity testing (Augmented Dickey-Fuller)
+  - Autocorrelation (ACF) and Partial Autocorrelation (PACF)
+  - Trend and seasonal component identification
+- **Probability Analysis**:
+  - Distribution fitting (Normal, Exponential, Gamma, Log-Normal)
+  - Goodness-of-fit testing (Kolmogorov-Smirnov)
+  - Probability density function visualization
+  - Expected values and probability statistics
+
+### 5. **Data Preprocessing**
 - **Missing Value Handling**:
   - Fill with mean, median, or mode
   - Remove rows or columns with missing data
@@ -55,27 +81,50 @@ An intelligent, AI-driven Python application for automated Exploratory Data Anal
   - MinMaxScaler (range 0-1)
   - RobustScaler (using median and IQR)
 
-### 5. **Data Integrity Checks**
+### 6. **Data Integrity Checks**
 - Duplicate row detection and removal
 - Data type consistency validation
 - Date format validation
 - Numerical data validation (infinites, negatives, zeros)
 - Categorical data consistency checks
 
-### 6. **Machine Learning Models**
+### 7. **Expanded Machine Learning Models** ⭐ NEW
 - **Regression Models**:
   - Linear Regression
+  - Ridge Regression (L2 regularization)
+  - Lasso Regression (L1 regularization)
+  - Support Vector Regression (SVR)
+  - K-Nearest Neighbors (KNN) Regressor
   - Decision Tree Regressor
   - Random Forest Regressor
-- **Performance Metrics**:
-  - RMSE (Root Mean Squared Error)
-  - MAE (Mean Absolute Error)
-  - R² Score
+- **Classification Models**:
+  - Logistic Regression
+  - Support Vector Classification (SVC)
+  - K-Nearest Neighbors (KNN) Classifier
+  - Decision Tree Classifier
+  - Random Forest Classifier
+- **Gradient Boosting Models**:
+  - XGBoost (eXtreme Gradient Boosting)
+  - LightGBM (Light Gradient Boosting Machine)
+  - CatBoost (Categorical Boosting)
+- **Time Series Models**:
+  - ARIMA (AutoRegressive Integrated Moving Average)
+  - Facebook Prophet
+- **Advanced Features**:
+  - Multi-model training and comparison
+  - Hyperparameter tuning controls
+  - Model performance comparison
   - Feature importance visualization
+- **Performance Metrics**:
+  - Regression: RMSE, MAE, R² Score
+  - Classification: Accuracy, Precision, Recall, F1-Score
 
-### 7. **Export & Reporting**
+### 8. **Export & Reporting**
 - **Download Processed Data**: CSV, Excel, JSON formats
-- **Python Code Generation**: Reproducible scripts for all operations
+- **Python Code Generation**: Reproducible scripts for all operations including:
+  - Statistical analysis code
+  - Model training code (including gradient boosting)
+  - Data preprocessing operations
 - **PDF Reports**: Comprehensive analysis reports with:
   - Executive summary
   - Dataset information
@@ -153,41 +202,52 @@ streamlit run app.py
    - Create interactive visualizations
    - Analyze distributions and correlations
 
-3. **🧹 Preprocessing**:
+3. **📈 Statistical Analysis** ⭐ NEW:
+   - Perform descriptive statistics
+   - Run inferential tests (t-tests, ANOVA, chi-square)
+   - Analyze correlations and causality
+   - Conduct time series analysis
+   - Fit probability distributions
+
+4. **🧹 Preprocessing**:
    - Handle missing values
    - Detect and manage outliers
    - Normalize or scale features
 
-4. **✅ Data Integrity**:
+5. **✅ Data Integrity**:
    - Check for duplicates
    - Validate data types
    - Ensure data consistency
 
-5. **🤖 Model Training**:
-   - Select features and target variable
-   - Train regression models
-   - Evaluate performance metrics
+6. **🤖 Model Training** ⭐ ENHANCED:
+   - Select multiple models for comparison
+   - Train regression, classification, gradient boosting, or time series models
+   - Fine-tune hyperparameters
+   - Compare model performance
+   - Visualize feature importance
 
-6. **💾 Export & Reports**:
+7. **💾 Export & Reports**:
    - Download processed datasets
-   - Generate Python scripts
+   - Generate Python scripts (including new models)
    - Create PDF reports
 
 ## 📦 Project Structure
 
 ```
 AI-EDA-Assistant/
-├── app.py                  # Main Streamlit application
-├── data_handler.py         # File upload and parsing module
-├── eda.py                  # EDA functionality and visualizations
-├── preprocessing.py        # Data preprocessing operations
-├── data_integrity.py       # Data validation and integrity checks
-├── model_training.py       # Machine learning model training
-├── code_generator.py       # Python code generation
-├── report_generator.py     # PDF report generation
-├── requirements.txt        # Project dependencies
-├── .gitignore             # Git ignore file
-└── README.md              # Project documentation
+├── app.py                      # Main Streamlit application
+├── data_handler.py             # File upload and parsing module
+├── eda.py                      # EDA functionality and visualizations
+├── statistical_analysis.py     # Advanced statistical analysis ⭐ NEW
+├── preprocessing.py            # Data preprocessing operations
+├── data_integrity.py           # Data validation and integrity checks
+├── model_training.py           # ML model training (expanded) ⭐ ENHANCED
+├── code_generator.py           # Python code generation (updated)
+├── report_generator.py         # PDF report generation
+├── utils.py                    # Utility functions
+├── requirements.txt            # Project dependencies (updated)
+├── .gitignore                 # Git ignore file
+└── README.md                  # Project documentation
 ```
 
 ## 🛠️ Technology Stack
@@ -195,6 +255,9 @@ AI-EDA-Assistant/
 - **Data Processing**: Pandas, NumPy
 - **Visualization**: Matplotlib, Seaborn, Plotly
 - **Machine Learning**: Scikit-learn, SciPy
+- **Gradient Boosting**: XGBoost, LightGBM, CatBoost ⭐ NEW
+- **Statistical Analysis**: Statsmodels ⭐ NEW
+- **Time Series**: ARIMA, Facebook Prophet ⭐ NEW
 - **Web Framework**: Streamlit
 - **Report Generation**: FPDF2
 - **File Handling**: openpyxl, xlrd
