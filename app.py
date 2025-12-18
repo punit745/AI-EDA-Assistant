@@ -6,6 +6,7 @@ An AI-driven tool for automated exploratory data analysis and preprocessing.
 import streamlit as st
 import pandas as pd
 import numpy as np
+import os
 from io import BytesIO
 import base64
 from datetime import datetime
@@ -32,7 +33,6 @@ st.set_page_config(
 def load_css():
     """Load custom CSS styling."""
     try:
-        import os
         css_path = os.path.join(os.path.dirname(__file__), 'style.css')
         with open(css_path) as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)

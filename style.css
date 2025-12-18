@@ -20,7 +20,7 @@
     -webkit-text-fill-color: transparent;
     background-clip: text;
     margin-bottom: 1rem;
-    animation: glow 3s ease-in-out 3 alternate;
+    animation: glow 2s ease-in-out 1;
 }
 
 .home-subtitle {
@@ -49,7 +49,6 @@
 .feature-icon {
     font-size: 3rem;
     margin-bottom: 1rem;
-    animation: bounce 2s ease-in-out 2;
 }
 
 /* Button styling */
