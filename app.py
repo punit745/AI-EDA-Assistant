@@ -32,9 +32,11 @@ st.set_page_config(
 def load_css():
     """Load custom CSS styling."""
     try:
-        with open('/home/runner/work/AI-EDA-Assistant/AI-EDA-Assistant/style.css') as f:
+        import os
+        css_path = os.path.join(os.path.dirname(__file__), 'style.css')
+        with open(css_path) as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
-    except:
+    except (FileNotFoundError, IOError):
         pass
 
 load_css()
