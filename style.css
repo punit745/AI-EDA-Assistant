@@ -1,0 +1,259 @@
+/* Dark Theme Custom Styling for AI-EDA Assistant */
+
+/* Main container styling */
+.main {
+    background: linear-gradient(135deg, #0e1117 0%, #1a1d29 100%);
+}
+
+/* Home page styling */
+.home-header {
+    text-align: center;
+    padding: 3rem 0;
+    animation: fadeInDown 1s ease-in;
+}
+
+.home-title {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #00d4ff 0%, #0091ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.home-subtitle {
+    font-size: 1.5rem;
+    color: #a0a0a0;
+    margin-bottom: 2rem;
+}
+
+/* Feature card styling */
+.feature-card {
+    background: linear-gradient(135deg, #1a1d29 0%, #252936 100%);
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 1rem;
+    border: 1px solid #2d3142;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 212, 255, 0.3);
+    border-color: #00d4ff;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: bounce 2s ease-in-out infinite;
+}
+
+/* Button styling */
+.stButton > button {
+    background: linear-gradient(135deg, #00d4ff 0%, #0091ff 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 212, 255, 0.3);
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 212, 255, 0.5);
+    background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
+}
+
+/* Navigation styling */
+.nav-link {
+    color: #fafafa;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0.25rem;
+}
+
+.nav-link:hover {
+    background: linear-gradient(135deg, #00d4ff 0%, #0091ff 100%);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Card animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(0, 212, 255, 0.5));
+    }
+    to {
+        filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8));
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Metric cards */
+.stMetric {
+    background: linear-gradient(135deg, #1a1d29 0%, #252936 100%);
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #2d3142;
+    transition: all 0.3s ease;
+}
+
+.stMetric:hover {
+    border-color: #00d4ff;
+    transform: scale(1.02);
+}
+
+/* Dataframe styling */
+.stDataFrame {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+/* Expander styling */
+.streamlit-expanderHeader {
+    background: linear-gradient(135deg, #1a1d29 0%, #252936 100%);
+    border-radius: 10px;
+    border: 1px solid #2d3142;
+    transition: all 0.3s ease;
+}
+
+.streamlit-expanderHeader:hover {
+    border-color: #00d4ff;
+}
+
+/* Sidebar styling */
+.css-1d391kg {
+    background: linear-gradient(135deg, #0e1117 0%, #1a1d29 100%);
+}
+
+/* File uploader styling */
+.stFileUploader {
+    border: 2px dashed #00d4ff;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.stFileUploader:hover {
+    border-color: #0091ff;
+    background: rgba(0, 212, 255, 0.05);
+}
+
+/* Tab styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background: transparent;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: linear-gradient(135deg, #1a1d29 0%, #252936 100%);
+    border-radius: 8px;
+    border: 1px solid #2d3142;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    border-color: #00d4ff;
+    transform: translateY(-2px);
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #00d4ff 0%, #0091ff 100%);
+    border-color: #00d4ff;
+}
+
+/* Smooth page transitions */
+.element-container {
+    animation: fadeInUp 0.5s ease-in;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #1a1d29;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #00d4ff 0%, #0091ff 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
+}
+
+/* Info/Warning/Error boxes */
+.stAlert {
+    border-radius: 10px;
+    border-left: 4px solid;
+    animation: fadeInUp 0.5s ease-in;
+}
+
+/* Success message */
+.stSuccess {
+    border-left-color: #00ff88;
+    background: rgba(0, 255, 136, 0.1);
+}
+
+/* Info message */
+.stInfo {
+    border-left-color: #00d4ff;
+    background: rgba(0, 212, 255, 0.1);
+}
+
+/* Warning message */
+.stWarning {
+    border-left-color: #ffaa00;
+    background: rgba(255, 170, 0, 0.1);
+}
+
+/* Error message */
+.stError {
+    border-left-color: #ff4444;
+    background: rgba(255, 68, 68, 0.1);
+}

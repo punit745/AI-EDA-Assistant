@@ -28,6 +28,17 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
+# Load custom CSS
+def load_css():
+    """Load custom CSS styling."""
+    try:
+        with open('/home/runner/work/AI-EDA-Assistant/AI-EDA-Assistant/style.css') as f:
+            st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
+    except:
+        pass
+
+load_css()
+
 # Initialize session state
 if 'df' not in st.session_state:
     st.session_state.df = None
@@ -39,30 +50,233 @@ if 'operations_log' not in st.session_state:
     st.session_state.operations_log = []
 if 'code_generator' not in st.session_state:
     st.session_state.code_generator = CodeGenerator()
+if 'current_page' not in st.session_state:
+    st.session_state.current_page = "🏠 Home"
 
 
-def main():
-    """Main application function."""
+def show_home_page():
+    """Display the home page with project information."""
     
-    # Title and description
-    st.title("📊 AI-EDA Assistant")
+    # Hero section with animated title
     st.markdown("""
-    An intelligent data analysis assistant that helps you perform exploratory data analysis (EDA) 
-    and preprocessing tasks with ease.
-    """)
+        <div class="home-header">
+            <h1 class="home-title">📊 AI-EDA Assistant</h1>
+            <p class="home-subtitle">Your Intelligent Data Analysis Companion</p>
+        </div>
+    """, unsafe_allow_html=True)
     
-    # Sidebar for file upload and navigation
+    # About section
+    st.markdown("---")
+    st.markdown("## 🎯 About This Project")
+    
+    col1, col2 = st.columns([2, 1])
+    
+    with col1:
+        st.markdown("""
+        ### Welcome to AI-EDA Assistant!
+        
+        **AI-EDA Assistant** is an intelligent, AI-driven application designed to revolutionize the way you perform 
+        **Exploratory Data Analysis (EDA)** and **data preprocessing**. Built with cutting-edge technologies, 
+        this tool empowers data scientists, analysts, and enthusiasts to extract meaningful insights from their data 
+        with minimal effort.
+        
+        #### 🎓 Purpose
+        
+        Our mission is to democratize data analysis by providing:
+        - **Automated EDA**: Generate comprehensive visualizations and statistical summaries automatically
+        - **Intelligent Preprocessing**: Handle missing values, outliers, and data normalization with smart algorithms
+        - **Advanced Analytics**: Perform complex statistical tests and time series analysis with ease
+        - **Machine Learning Integration**: Train and evaluate ML models without writing code
+        - **Professional Reports**: Export analysis results and Python code for reproducibility
+        
+        #### 🔬 Core Functionality
+        
+        The AI-EDA Assistant simplifies complex data workflows into intuitive, interactive steps:
+        1. **Upload** your dataset in various formats (CSV, Excel, JSON, TXT)
+        2. **Explore** your data with automated visualizations and statistics
+        3. **Analyze** with advanced statistical tests and correlation analysis
+        4. **Preprocess** to clean and transform your data
+        5. **Validate** data integrity and quality
+        6. **Model** with built-in machine learning algorithms
+        7. **Export** results, code, and professional reports
+        """)
+    
+    with col2:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <h3>Quick Start</h3>
+            <p>Get started in seconds! Simply upload your dataset and let AI do the heavy lifting.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Fast & Efficient</h3>
+            <p>Powered by optimized algorithms for lightning-fast analysis of large datasets.</p>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🎨</div>
+            <h3>Beautiful Visuals</h3>
+            <p>Create stunning, publication-ready visualizations with a single click.</p>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Key features section
+    st.markdown("---")
+    st.markdown("## ✨ Key Features")
+    
+    col1, col2, col3 = st.columns(3)
+    
+    with col1:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">📊</div>
+            <h3>Dataset Overview</h3>
+            <ul>
+                <li>Comprehensive data summaries</li>
+                <li>Column-wise statistics</li>
+                <li>Data type analysis</li>
+                <li>Missing value detection</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🔍</div>
+            <h3>Automated EDA</h3>
+            <ul>
+                <li>Distribution analysis</li>
+                <li>Correlation heatmaps</li>
+                <li>Box plots for outliers</li>
+                <li>Scatter matrices</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col2:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">📈</div>
+            <h3>Statistical Analysis</h3>
+            <ul>
+                <li>Hypothesis testing (t-test, ANOVA)</li>
+                <li>Correlation analysis</li>
+                <li>Time series decomposition</li>
+                <li>Probability distributions</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🧹</div>
+            <h3>Data Preprocessing</h3>
+            <ul>
+                <li>Missing value imputation</li>
+                <li>Outlier detection & removal</li>
+                <li>Data normalization</li>
+                <li>Feature scaling</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    with col3:
+        st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">✅</div>
+            <h3>Data Integrity</h3>
+            <ul>
+                <li>Duplicate detection</li>
+                <li>Type validation</li>
+                <li>Format checking</li>
+                <li>Consistency analysis</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>ML Training</h3>
+            <ul>
+                <li>10+ regression algorithms</li>
+                <li>10+ classification models</li>
+                <li>Time series forecasting</li>
+                <li>Model evaluation metrics</li>
+            </ul>
+        </div>
+        """, unsafe_allow_html=True)
+    
+    # Technology stack
+    st.markdown("---")
+    st.markdown("## 🛠️ Technology Stack")
+    
+    tech_col1, tech_col2, tech_col3, tech_col4 = st.columns(4)
+    
+    with tech_col1:
+        st.info("**Frontend**\n\n🎨 Streamlit\n\n📊 Plotly")
+    
+    with tech_col2:
+        st.info("**Data Processing**\n\n🐼 Pandas\n\n🔢 NumPy")
+    
+    with tech_col3:
+        st.info("**ML & Stats**\n\n🤖 Scikit-learn\n\n📈 Statsmodels")
+    
+    with tech_col4:
+        st.info("**Visualization**\n\n🎭 Seaborn\n\n📉 Matplotlib")
+    
+    # Getting started
+    st.markdown("---")
+    st.markdown("## 🚀 Getting Started")
+    
+    st.markdown("""
+    <div class="feature-card">
+        <h3>📝 Three Simple Steps to Start Analyzing:</h3>
+        <ol>
+            <li><strong>Upload Your Data:</strong> Use the sidebar to upload your dataset (CSV, Excel, JSON, or TXT)</li>
+            <li><strong>Choose Your Task:</strong> Select from Dataset Overview, EDA, Statistical Analysis, Preprocessing, Data Integrity, Model Training, or Export & Reports</li>
+            <li><strong>Explore & Analyze:</strong> Interact with visualizations, run analyses, and export your results</li>
+        </ol>
+        <p style="margin-top: 1.5rem;"><strong>💡 Tip:</strong> Start with "Dataset Overview" to get familiar with your data, then move to "Automated EDA" for visualizations!</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+
+def render_navigation():
+    """Render the navigation bar."""
+    st.markdown("---")
+    
+    # Navigation in sidebar
     with st.sidebar:
-        st.header("📁 Data Upload")
+        st.markdown("### 🧭 Navigation")
+        
+        pages = [
+            "🏠 Home",
+            "📊 Dataset Overview", 
+            "🔍 Automated EDA",
+            "📈 Statistical Analysis",
+            "🧹 Preprocessing",
+            "✅ Data Integrity",
+            "🤖 Model Training",
+            "💾 Export & Reports"
+        ]
+        
+        # Create navigation buttons
+        for page in pages:
+            if st.button(page, key=f"nav_{page}", use_container_width=True):
+                st.session_state.current_page = page
+                st.rerun()
+        
+        st.markdown("---")
+        
+        # File upload section
+        st.markdown("### 📁 Browse File")
         uploaded_file = st.file_uploader(
             "Upload your dataset",
             type=['csv', 'xlsx', 'xls', 'json', 'txt'],
-            help="Supported formats: CSV, Excel, JSON, TXT"
+            help="Supported formats: CSV, Excel, JSON, TXT",
+            key="file_uploader"
         )
         
         if uploaded_file is not None:
             try:
-                if st.session_state.df is None or st.button("Reload Data"):
+                if st.session_state.df is None or st.button("🔄 Reload Data"):
                     df = st.session_state.data_handler.load_data(uploaded_file)
                     st.session_state.df = df.copy()
                     st.session_state.original_df = df.copy()
@@ -72,62 +286,54 @@ def main():
                     st.info(f"📏 Shape: {file_info['rows']} rows × {file_info['columns']} columns")
             except Exception as e:
                 st.error(f"❌ Error loading file: {str(e)}")
-        
-        st.markdown("---")
-        
-        # Navigation
-        st.header("🧭 Navigation")
-        page = st.radio(
-            "Select Task",
-            ["📊 Dataset Overview", 
-             "🔍 Automated EDA",
-             "📈 Statistical Analysis",
-             "🧹 Preprocessing",
-             "✅ Data Integrity",
-             "🤖 Model Training",
-             "💾 Export & Reports"]
-        )
+
+
+def main():
+    """Main application function."""
     
-    # Main content area
-    if st.session_state.df is None:
-        st.info("👆 Please upload a dataset to get started.")
-        
-        # Example usage
-        with st.expander("ℹ️ How to use this app"):
-            st.markdown("""
-            ### Steps to get started:
-            
-            1. **Upload Data**: Use the file uploader in the sidebar to upload your dataset
-            2. **Explore Data**: View dataset overview and statistics
-            3. **Run EDA**: Generate automated visualizations and insights
-            4. **Preprocess**: Handle missing values, outliers, and normalize data
-            5. **Check Integrity**: Validate data quality and consistency
-            6. **Train Models**: Build basic machine learning models
-            7. **Export**: Download processed data, reports, and Python code
-            
-            ### Supported File Formats:
-            - CSV (.csv)
-            - Excel (.xlsx, .xls)
-            - JSON (.json)
-            - Text (.txt)
-            """)
-        
-        return
+    # Render navigation
+    render_navigation()
+    
+    # Get current page
+    page = st.session_state.current_page
     
     # Route to selected page
-    if page == "📊 Dataset Overview":
+    if page == "🏠 Home":
+        show_home_page()
+    elif page == "📊 Dataset Overview":
+        if st.session_state.df is None:
+            st.warning("👆 Please upload a dataset using the sidebar to get started.")
+            return
         show_dataset_overview()
     elif page == "🔍 Automated EDA":
+        if st.session_state.df is None:
+            st.warning("👆 Please upload a dataset using the sidebar to get started.")
+            return
         show_automated_eda()
     elif page == "📈 Statistical Analysis":
+        if st.session_state.df is None:
+            st.warning("👆 Please upload a dataset using the sidebar to get started.")
+            return
         show_statistical_analysis()
     elif page == "🧹 Preprocessing":
+        if st.session_state.df is None:
+            st.warning("👆 Please upload a dataset using the sidebar to get started.")
+            return
         show_preprocessing()
     elif page == "✅ Data Integrity":
+        if st.session_state.df is None:
+            st.warning("👆 Please upload a dataset using the sidebar to get started.")
+            return
         show_data_integrity()
     elif page == "🤖 Model Training":
+        if st.session_state.df is None:
+            st.warning("👆 Please upload a dataset using the sidebar to get started.")
+            return
         show_model_training()
     elif page == "💾 Export & Reports":
+        if st.session_state.df is None:
+            st.warning("👆 Please upload a dataset using the sidebar to get started.")
+            return
         show_export_reports()
 
 
