@@ -42,7 +42,7 @@ class AIInsights:
                 try:
                     non_numeric = pd.to_numeric(self.df[col], errors='coerce').isna().sum() - self.df[col].isna().sum()
                     type_consistency_issues += non_numeric
-                except:
+                except (ValueError, TypeError):
                     pass
         
         type_consistency_score = max(0, 100 - (type_consistency_issues / total_cells * 100))
