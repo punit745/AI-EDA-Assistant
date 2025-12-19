@@ -20,6 +20,8 @@ from model_training import ModelTrainer
 from code_generator import CodeGenerator
 from report_generator import create_simple_report
 from statistical_analysis import StatisticalAnalysis
+from ai_insights import AIInsights
+from multi_file_analyzer import MultiFileAnalyzer
 
 # Page configuration
 st.set_page_config(
@@ -30,16 +32,18 @@ st.set_page_config(
 )
 
 # Load custom CSS
-def load_css():
-    """Load custom CSS styling."""
+def load_css(theme='dark'):
+    """Load custom CSS styling based on theme."""
     try:
-        css_path = os.path.join(os.path.dirname(__file__), 'style.css')
+        if theme == 'light':
+            css_path = os.path.join(os.path.dirname(__file__), 'style_light.css')
+        else:
+            css_path = os.path.join(os.path.dirname(__file__), 'style.css')
+        
         with open(css_path) as f:
             st.markdown(f'<style>{f.read()}</style>', unsafe_allow_html=True)
     except (FileNotFoundError, IOError):
         pass
-
-load_css()
 
 # Initialize session state
 if 'df' not in st.session_state:
@@ -54,6 +58,12 @@ if 'code_generator' not in st.session_state:
     st.session_state.code_generator = CodeGenerator()
 if 'current_page' not in st.session_state:
     st.session_state.current_page = "🏠 Home"
+if 'theme' not in st.session_state:
+    st.session_state.theme = "dark"  # default theme
+if 'multi_file_analyzer' not in st.session_state:
+    st.session_state.multi_file_analyzer = MultiFileAnalyzer()
+if 'uploaded_files_count' not in st.session_state:
+    st.session_state.uploaded_files_count = 0
 
 
 def show_home_page():
@@ -63,7 +73,7 @@ def show_home_page():
     st.markdown("""
         <div class="home-header">
             <h1 class="home-title">📊 AI-EDA Assistant</h1>
-            <p class="home-subtitle">Your Intelligent Data Analysis Companion</p>
+            <p class="home-subtitle">Your Intelligent Data Analysis Companion with AI-Powered Insights</p>
         </div>
     """, unsafe_allow_html=True)
     
@@ -85,8 +95,10 @@ def show_home_page():
         #### 🎓 Purpose
         
         Our mission is to democratize data analysis by providing:
+        - **AI-Powered Insights**: Automated health reports, correlation analysis, and smart recommendations
         - **Automated EDA**: Generate comprehensive visualizations and statistical summaries automatically
         - **Intelligent Preprocessing**: Handle missing values, outliers, and data normalization with smart algorithms
+        - **Multi-File Analysis**: Compare, merge, and analyze multiple datasets simultaneously
         - **Advanced Analytics**: Perform complex statistical tests and time series analysis with ease
         - **Machine Learning Integration**: Train and evaluate ML models without writing code
         - **Professional Reports**: Export analysis results and Python code for reproducibility
@@ -94,13 +106,15 @@ def show_home_page():
         #### 🔬 Core Functionality
         
         The AI-EDA Assistant simplifies complex data workflows into intuitive, interactive steps:
-        1. **Upload** your dataset in various formats (CSV, Excel, JSON, TXT)
-        2. **Explore** your data with automated visualizations and statistics
-        3. **Analyze** with advanced statistical tests and correlation analysis
-        4. **Preprocess** to clean and transform your data
-        5. **Validate** data integrity and quality
-        6. **Model** with built-in machine learning algorithms
-        7. **Export** results, code, and professional reports
+        1. **Upload** your dataset(s) in various formats (CSV, Excel, JSON, TXT)
+        2. **AI Insights** get automated health reports and smart recommendations
+        3. **Explore** your data with automated visualizations and statistics
+        4. **Analyze** with advanced statistical tests and correlation analysis
+        5. **Preprocess** to clean and transform your data
+        6. **Validate** data integrity and quality
+        7. **Model** with built-in machine learning algorithms
+        8. **Compare** multiple datasets with multi-file analysis
+        9. **Export** results, code, and professional reports
         """)
     
     with col2:
@@ -132,6 +146,17 @@ def show_home_page():
     
     with col1:
         st.markdown("""
+        <div class="feature-card">
+            <div class="feature-icon">🤖</div>
+            <h3>AI-Powered Insights</h3>
+            <ul>
+                <li>Data health scoring</li>
+                <li>Automated recommendations</li>
+                <li>Smart preprocessing hints</li>
+                <li>Correlation insights</li>
+            </ul>
+        </div>
+        
         <div class="feature-card">
             <div class="feature-icon">📊</div>
             <h3>Dataset Overview</h3>
@@ -194,13 +219,24 @@ def show_home_page():
         </div>
         
         <div class="feature-card">
-            <div class="feature-icon">🤖</div>
+            <div class="feature-icon">🎯</div>
             <h3>ML Training</h3>
             <ul>
                 <li>10+ regression algorithms</li>
                 <li>10+ classification models</li>
                 <li>Time series forecasting</li>
                 <li>Model evaluation metrics</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card">
+            <div class="feature-icon">📂</div>
+            <h3>Multi-File Analysis</h3>
+            <ul>
+                <li>Compare multiple datasets</li>
+                <li>Merge and join data</li>
+                <li>Aggregate analysis</li>
+                <li>Relationship detection</li>
             </ul>
         </div>
         """, unsafe_allow_html=True)
@@ -246,16 +282,33 @@ def render_navigation():
     
     # Navigation in sidebar
     with st.sidebar:
+        # Theme Toggle
+        st.markdown("### 🎨 Theme")
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("🌙 Dark", use_container_width=True, 
+                        type="primary" if st.session_state.theme == "dark" else "secondary"):
+                st.session_state.theme = "dark"
+                st.rerun()
+        with col2:
+            if st.button("☀️ Light", use_container_width=True,
+                        type="primary" if st.session_state.theme == "light" else "secondary"):
+                st.session_state.theme = "light"
+                st.rerun()
+        
+        st.markdown("---")
         st.markdown("### 🧭 Navigation")
         
         pages = [
             "🏠 Home",
-            "📊 Dataset Overview", 
+            "📊 Dataset Overview",
+            "🤖 AI Insights",
             "🔍 Automated EDA",
             "📈 Statistical Analysis",
             "🧹 Preprocessing",
             "✅ Data Integrity",
-            "🤖 Model Training",
+            "🎯 Model Training",
+            "📂 Multi-File Analysis",
             "💾 Export & Reports"
         ]
         
@@ -268,30 +321,66 @@ def render_navigation():
         st.markdown("---")
         
         # File upload section
-        st.markdown("### 📁 Browse File")
-        uploaded_file = st.file_uploader(
-            "Upload your dataset",
-            type=['csv', 'xlsx', 'xls', 'json', 'txt'],
-            help="Supported formats: CSV, Excel, JSON, TXT",
-            key="file_uploader"
-        )
+        st.markdown("### 📁 Upload Dataset")
         
-        if uploaded_file is not None:
-            try:
-                if st.session_state.df is None or st.button("🔄 Reload Data"):
-                    df = st.session_state.data_handler.load_data(uploaded_file)
-                    st.session_state.df = df.copy()
-                    st.session_state.original_df = df.copy()
-                    st.success(f"✅ Data loaded successfully!")
-                    
-                    file_info = st.session_state.data_handler.get_file_info()
-                    st.info(f"📏 Shape: {file_info['rows']} rows × {file_info['columns']} columns")
-            except Exception as e:
-                st.error(f"❌ Error loading file: {str(e)}")
+        # Option for single or multiple files
+        upload_mode = st.radio("Upload Mode", ["Single File", "Multiple Files"], horizontal=True)
+        
+        if upload_mode == "Single File":
+            uploaded_file = st.file_uploader(
+                "Upload your dataset",
+                type=['csv', 'xlsx', 'xls', 'json', 'txt'],
+                help="Supported formats: CSV, Excel, JSON, TXT",
+                key="file_uploader"
+            )
+            
+            if uploaded_file is not None:
+                try:
+                    if st.session_state.df is None or st.button("🔄 Reload Data"):
+                        df = st.session_state.data_handler.load_data(uploaded_file)
+                        st.session_state.df = df.copy()
+                        st.session_state.original_df = df.copy()
+                        st.success(f"✅ Data loaded successfully!")
+                        
+                        file_info = st.session_state.data_handler.get_file_info()
+                        st.info(f"📏 Shape: {file_info['rows']} rows × {file_info['columns']} columns")
+                except Exception as e:
+                    st.error(f"❌ Error loading file: {str(e)}")
+        
+        else:  # Multiple Files
+            uploaded_files = st.file_uploader(
+                "Upload multiple datasets",
+                type=['csv', 'xlsx', 'xls', 'json', 'txt'],
+                accept_multiple_files=True,
+                help="Upload multiple files for comparison",
+                key="multi_file_uploader"
+            )
+            
+            if uploaded_files:
+                st.info(f"📊 {len(uploaded_files)} file(s) uploaded")
+                
+                for i, file in enumerate(uploaded_files):
+                    try:
+                        df = st.session_state.data_handler.load_data(file)
+                        file_name = file.name.split('.')[0]
+                        st.session_state.multi_file_analyzer.add_dataset(file_name, df)
+                        
+                        # Set first file as main dataset
+                        if i == 0:
+                            st.session_state.df = df.copy()
+                            st.session_state.original_df = df.copy()
+                    except Exception as e:
+                        st.error(f"❌ Error loading {file.name}: {str(e)}")
+                
+                st.success(f"✅ {len(uploaded_files)} dataset(s) loaded!")
+                st.info("💡 Go to 'Multi-File Analysis' to compare datasets")
 
 
 def main():
     """Main application function."""
+    
+    # Load CSS based on current theme
+    load_css(st.session_state.theme)
     
     # Render navigation
     render_navigation()
@@ -307,6 +396,11 @@ def main():
             st.warning("👆 Please upload a dataset using the sidebar to get started.")
             return
         show_dataset_overview()
+    elif page == "🤖 AI Insights":
+        if st.session_state.df is None:
+            st.warning("👆 Please upload a dataset using the sidebar to get started.")
+            return
+        show_ai_insights()
     elif page == "🔍 Automated EDA":
         if st.session_state.df is None:
             st.warning("👆 Please upload a dataset using the sidebar to get started.")
@@ -327,16 +421,150 @@ def main():
             st.warning("👆 Please upload a dataset using the sidebar to get started.")
             return
         show_data_integrity()
-    elif page == "🤖 Model Training":
+    elif page == "🎯 Model Training":
         if st.session_state.df is None:
             st.warning("👆 Please upload a dataset using the sidebar to get started.")
             return
         show_model_training()
+    elif page == "📂 Multi-File Analysis":
+        show_multi_file_analysis()
     elif page == "💾 Export & Reports":
         if st.session_state.df is None:
             st.warning("👆 Please upload a dataset using the sidebar to get started.")
             return
         show_export_reports()
+
+
+
+
+def show_ai_insights():
+    """Display AI-powered insights page."""
+    st.header("🤖 AI-Powered Insights")
+    
+    df = st.session_state.df
+    ai_insights = AIInsights(df)
+    
+    # Data Health Score
+    st.subheader("📊 Data Health Report")
+    
+    health = ai_insights.get_data_health_score()
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric(
+            "Overall Health Score",
+            f"{health['overall_score']}/100",
+            help="Comprehensive data quality score"
+        )
+        st.info(f"**Grade:** {health['health_grade']}")
+    
+    with col2:
+        # Create a simple gauge chart
+        score = health['overall_score']
+        color = "🟢" if score >= 80 else "🟡" if score >= 60 else "🔴"
+        st.markdown(f"### {color} Health Status")
+        
+        progress_bar = st.progress(score / 100)
+    
+    with col3:
+        st.markdown("#### Health Breakdown")
+        st.write(f"✓ Missing Values: {health['missing_score']:.0f}/100")
+        st.write(f"✓ Duplicates: {health['duplicate_score']:.0f}/100")
+        st.write(f"✓ Type Consistency: {health['type_consistency_score']:.0f}/100")
+        st.write(f"✓ Outliers: {health['outlier_score']:.0f}/100")
+    
+    # Recommendations
+    st.markdown("#### 💡 Recommendations")
+    for rec in health['recommendations']:
+        st.markdown(f"- {rec}")
+    
+    st.markdown("---")
+    
+    # Correlation Insights
+    st.subheader("🔗 Correlation Insights")
+    
+    threshold = st.slider("Correlation Threshold", 0.5, 0.95, 0.7, 0.05)
+    correlation_insights = ai_insights.generate_correlation_insights(threshold)
+    
+    for insight in correlation_insights:
+        st.info(insight)
+    
+    st.markdown("---")
+    
+    # Feature Importance Hints
+    st.subheader("🎯 Feature Analysis Hints")
+    
+    feature_hints = ai_insights.detect_feature_importance_hints()
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("##### High Variance Features")
+        if feature_hints['high_variance_features']:
+            for feature in feature_hints['high_variance_features'][:5]:
+                st.write(f"• **{feature['column']}** (CV: {feature['coefficient_of_variation']})")
+        else:
+            st.info("No high variance features detected")
+        
+        st.markdown("##### Potential Target Variables")
+        if feature_hints['potential_target_variables']:
+            for feature in feature_hints['potential_target_variables'][:5]:
+                st.write(f"• **{feature['column']}** ({feature['unique_values']} unique values)")
+        else:
+            st.info("No obvious target variables detected")
+    
+    with col2:
+        st.markdown("##### Low Cardinality Categories")
+        if feature_hints['low_cardinality_categories']:
+            for feature in feature_hints['low_cardinality_categories'][:5]:
+                st.write(f"• **{feature['column']}** ({feature['unique_values']} categories)")
+        else:
+            st.info("No low cardinality categorical features")
+        
+        st.markdown("##### Timestamp Features")
+        if feature_hints['timestamp_features']:
+            for feature in feature_hints['timestamp_features'][:5]:
+                st.write(f"• **{feature}**")
+        else:
+            st.info("No timestamp features detected")
+    
+    st.markdown("---")
+    
+    # Preprocessing Suggestions
+    st.subheader("🧹 Smart Preprocessing Suggestions")
+    
+    suggestions = ai_insights.suggest_preprocessing_steps()
+    
+    if suggestions:
+        for i, suggestion in enumerate(suggestions, 1):
+            with st.expander(f"{i}. {suggestion['step']} - Priority: {suggestion['priority']}", expanded=i==1):
+                st.write(f"**Reason:** {suggestion['reason']}")
+                st.write(f"**Recommended Action:** {suggestion['recommended_action']}")
+                
+                if 'columns' in suggestion:
+                    st.write(f"**Affected Columns ({len(suggestion['columns'])}):** {', '.join(suggestion['columns'][:5])}")
+                    if len(suggestion['columns']) > 5:
+                        st.write(f"... and {len(suggestion['columns']) - 5} more")
+    else:
+        st.success("✅ No preprocessing issues detected! Your data is clean.")
+    
+    st.markdown("---")
+    
+    # Chart Recommendations
+    st.subheader("📊 Smart Chart Recommendations")
+    
+    columns = st.multiselect(
+        "Select columns to get chart recommendations",
+        df.columns.tolist(),
+        default=df.columns.tolist()[:3] if len(df.columns) >= 3 else df.columns.tolist()
+    )
+    
+    if columns:
+        for col in columns:
+            with st.expander(f"📈 Recommendations for: {col}"):
+                recommendations = ai_insights.auto_recommend_chart(col)
+                for rec in recommendations:
+                    st.write(f"• {rec}")
 
 
 def show_dataset_overview():
@@ -379,6 +607,7 @@ def show_automated_eda():
     
     df = st.session_state.df
     eda = EDA(df)
+    ai_insights = AIInsights(df)
     
     # Statistical Summary
     st.subheader("📈 Statistical Summary")
@@ -402,7 +631,7 @@ def show_automated_eda():
         st.info("No categorical columns found.")
     
     # Visualizations
-    st.subheader("📊 Visualizations")
+    st.subheader("📊 Interactive Visualizations")
     
     viz_option = st.selectbox(
         "Select Visualization",
@@ -413,6 +642,14 @@ def show_automated_eda():
         fig = eda.create_histograms()
         if fig:
             st.plotly_chart(fig, use_container_width=True)
+            
+            # Add AI insights
+            st.markdown("#### 💡 Automated Insights")
+            numeric_cols = df.select_dtypes(include=[np.number]).columns[:3]
+            for col in numeric_cols:
+                insight = ai_insights.generate_chart_insights("histogram", df[col])
+                if insight and insight != "No specific insights available":
+                    st.info(f"**{col}:** {insight}")
         else:
             st.info("No numerical columns available for histograms.")
     
@@ -427,6 +664,12 @@ def show_automated_eda():
         fig = eda.create_correlation_heatmap()
         if fig:
             st.plotly_chart(fig, use_container_width=True)
+            
+            # Add correlation insights
+            st.markdown("#### 💡 Correlation Analysis")
+            correlation_insights = ai_insights.generate_correlation_insights(threshold=0.7)
+            for insight in correlation_insights[:5]:
+                st.info(insight)
         else:
             st.info("Need at least 2 numerical columns for correlation heatmap.")
     
@@ -1356,6 +1599,196 @@ def show_model_training():
                     except Exception as e:
                         st.error(f"❌ Error training Prophet: {str(e)}")
 
+
+def show_multi_file_analysis():
+    """Display multi-file analysis page."""
+    st.header("📂 Multi-File Analysis")
+    
+    analyzer = st.session_state.multi_file_analyzer
+    datasets = analyzer.get_dataset_names()
+    
+    if len(datasets) == 0:
+        st.info("👆 No datasets loaded yet. Upload multiple files using 'Multiple Files' mode in the sidebar.")
+        st.markdown("""
+        ### How to use Multi-File Analysis:
+        
+        1. Switch to **Multiple Files** mode in the sidebar
+        2. Upload 2 or more datasets
+        3. Return to this page to compare and analyze them
+        
+        **Use Cases:**
+        - Compare sales data across different regions
+        - Analyze trends across time periods
+        - Merge customer and transaction data
+        - Aggregate data from multiple sources
+        """)
+        return
+    
+    st.success(f"✅ {len(datasets)} dataset(s) loaded: {', '.join(datasets)}")
+    
+    # Summary
+    st.subheader("📊 Datasets Summary")
+    summary = analyzer.get_summary()
+    
+    col1, col2, col3 = st.columns(3)
+    with col1:
+        st.metric("Total Datasets", summary['total_datasets'])
+    with col2:
+        st.metric("Total Rows", summary['total_rows'])
+    with col3:
+        st.metric("Total Columns", summary['total_columns'])
+    
+    # Schema comparison
+    st.subheader("📋 Schema Comparison")
+    schema_df = analyzer.compare_schemas()
+    st.dataframe(schema_df, use_container_width=True)
+    
+    # Common columns
+    st.subheader("🔗 Column Analysis")
+    common_cols = analyzer.find_common_columns()
+    
+    col1, col2 = st.columns(2)
+    
+    with col1:
+        st.markdown("##### Common Columns")
+        if common_cols['common']:
+            for col in common_cols['common']:
+                st.write(f"• {col}")
+        else:
+            st.info("No common columns found")
+    
+    with col2:
+        st.markdown("##### Unique Columns")
+        for dataset, cols in common_cols['unique'].items():
+            if cols:
+                with st.expander(f"{dataset} ({len(cols)} unique)"):
+                    for col in cols[:10]:
+                        st.write(f"• {col}")
+                    if len(cols) > 10:
+                        st.write(f"... and {len(cols) - 10} more")
+    
+    # Relationship detection
+    st.subheader("🔍 Potential Relationships")
+    relationships = analyzer.detect_relationships()
+    
+    if relationships:
+        st.success(f"Found {len(relationships)} potential join relationship(s)")
+        
+        for i, rel in enumerate(relationships[:5], 1):
+            with st.expander(f"{i}. {rel['dataset1']} ↔ {rel['dataset2']} on '{rel['join_column']}'", 
+                           expanded=i==1):
+                st.write(f"**Join Column:** {rel['join_column']}")
+                st.write(f"**Common Values:** {rel['common_values']}")
+                st.write(f"**Overlap:** {rel['overlap_percentage']:.1f}%")
+                st.write(f"**Recommendation:** {rel['recommendation']}")
+    else:
+        st.info("No obvious relationships detected between datasets")
+    
+    # Comparison Analysis
+    if len(datasets) >= 2:
+        st.subheader("📊 Comparative Analysis")
+        
+        # Column selection for comparison
+        if common_cols['common']:
+            selected_column = st.selectbox(
+                "Select column to compare",
+                common_cols['common']
+            )
+            
+            if selected_column:
+                # Statistics comparison
+                st.markdown("##### Statistics Comparison")
+                stats_df = analyzer.compare_statistics(selected_column)
+                st.dataframe(stats_df, use_container_width=True)
+                
+                # Visual comparison
+                st.markdown("##### Visual Comparison")
+                chart_type = st.selectbox(
+                    "Chart Type",
+                    ["box", "violin", "histogram"],
+                    format_func=lambda x: x.title()
+                )
+                
+                try:
+                    fig = analyzer.create_comparison_chart(selected_column, chart_type)
+                    st.plotly_chart(fig, use_container_width=True)
+                except Exception as e:
+                    st.error(f"Error creating chart: {str(e)}")
+        else:
+            st.warning("No common columns available for comparison")
+    
+    # Merge datasets
+    if len(datasets) >= 2:
+        st.subheader("🔀 Merge Datasets")
+        
+        col1, col2 = st.columns(2)
+        with col1:
+            dataset1 = st.selectbox("Select first dataset", datasets, key="merge_ds1")
+        with col2:
+            dataset2 = st.selectbox("Select second dataset", 
+                                   [d for d in datasets if d != dataset1], 
+                                   key="merge_ds2")
+        
+        if dataset1 and dataset2:
+            # Find common columns for join
+            common = list(set(analyzer.datasets[dataset1].columns) & 
+                         set(analyzer.datasets[dataset2].columns))
+            
+            if common:
+                col1, col2 = st.columns(2)
+                with col1:
+                    join_column = st.selectbox("Join column", common)
+                with col2:
+                    join_type = st.selectbox("Join type", 
+                                            ["inner", "outer", "left", "right"])
+                
+                if st.button("🔀 Merge Datasets"):
+                    try:
+                        merged_df = analyzer.merge_datasets(dataset1, dataset2, 
+                                                           join_column, join_type)
+                        
+                        st.success(f"✅ Merged {len(merged_df)} rows")
+                        st.dataframe(merged_df.head(20), use_container_width=True)
+                        
+                        # Option to use merged dataset
+                        if st.button("Use merged dataset as main dataset"):
+                            st.session_state.df = merged_df
+                            st.session_state.original_df = merged_df.copy()
+                            st.success("Merged dataset is now the active dataset!")
+                            st.rerun()
+                    except Exception as e:
+                        st.error(f"Error merging datasets: {str(e)}")
+            else:
+                st.warning("No common columns found for merging these datasets")
+    
+    # Aggregation analysis
+    if len(datasets) >= 2 and common_cols['common']:
+        st.subheader("📊 Aggregation Analysis")
+        
+        col1, col2, col3 = st.columns(3)
+        
+        with col1:
+            group_col = st.selectbox("Group by column", common_cols['common'], key="agg_group")
+        with col2:
+            value_col = st.selectbox("Value column", common_cols['common'], key="agg_value")
+        with col3:
+            agg_func = st.selectbox("Aggregation", ["mean", "sum", "count", "median"])
+        
+        if st.button("📊 Perform Aggregation"):
+            try:
+                agg_df = analyzer.aggregate_analysis(group_col, value_col, agg_func)
+                
+                if not agg_df.empty:
+                    st.dataframe(agg_df, use_container_width=True)
+                    
+                    # Visualize aggregation
+                    fig = px.bar(agg_df, barmode='group', 
+                               title=f"{agg_func.title()} of {value_col} by {group_col}")
+                    st.plotly_chart(fig, use_container_width=True)
+                else:
+                    st.warning("No data available for aggregation")
+            except Exception as e:
+                st.error(f"Error performing aggregation: {str(e)}")
 
 
 def show_export_reports():

@@ -1,0 +1,245 @@
+/* Light Theme Custom Styling for AI-EDA Assistant */
+
+/* Main container styling */
+.main {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f7fa 100%);
+}
+
+/* Home page styling */
+.home-header {
+    text-align: center;
+    padding: 3rem 0;
+    animation: fadeInDown 1s ease-in;
+}
+
+.home-title {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    animation: glow 2s ease-in-out 1;
+}
+
+.home-subtitle {
+    font-size: 1.5rem;
+    color: #5a5a5a;
+    margin-bottom: 2rem;
+}
+
+/* Feature card styling */
+.feature-card {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 2rem;
+    margin: 1rem;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 145, 255, 0.2);
+    border-color: #0091ff;
+}
+
+.feature-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+/* Button styling */
+.stButton > button {
+    background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    padding: 0.75rem 2rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 145, 255, 0.2);
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 145, 255, 0.3);
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+}
+
+/* Navigation styling */
+.nav-link {
+    color: #333333;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    display: inline-block;
+    margin: 0.25rem;
+}
+
+.nav-link:hover {
+    background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
+    color: #ffffff;
+    transform: scale(1.05);
+}
+
+/* Card animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 5px rgba(0, 145, 255, 0.3));
+    }
+    to {
+        filter: drop-shadow(0 0 20px rgba(0, 145, 255, 0.5));
+    }
+}
+
+/* Metric cards */
+.stMetric {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.stMetric:hover {
+    border-color: #0091ff;
+    transform: scale(1.02);
+}
+
+/* Dataframe styling */
+.stDataFrame {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Expander styling */
+.streamlit-expanderHeader {
+    background: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+}
+
+.streamlit-expanderHeader:hover {
+    border-color: #0091ff;
+}
+
+/* File uploader styling */
+.stFileUploader {
+    border: 2px dashed #0091ff;
+    border-radius: 10px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.stFileUploader:hover {
+    border-color: #0066cc;
+    background: rgba(0, 145, 255, 0.05);
+}
+
+/* Tab styling */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background: transparent;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: #ffffff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 0.75rem 1.5rem;
+    transition: all 0.3s ease;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    border-color: #0091ff;
+    transform: translateY(-2px);
+}
+
+.stTabs [aria-selected="true"] {
+    background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
+    border-color: #0091ff;
+    color: #ffffff;
+}
+
+/* Smooth page transitions */
+.element-container {
+    animation: fadeInUp 0.5s ease-in;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f5f7fa;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #0091ff 0%, #0066cc 100%);
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(135deg, #0066cc 0%, #004c99 100%);
+}
+
+/* Info/Warning/Error boxes */
+.stAlert {
+    border-radius: 10px;
+    border-left: 4px solid;
+    animation: fadeInUp 0.5s ease-in;
+}
+
+/* Success message */
+.stSuccess {
+    border-left-color: #00cc66;
+    background: rgba(0, 204, 102, 0.1);
+}
+
+/* Info message */
+.stInfo {
+    border-left-color: #0091ff;
+    background: rgba(0, 145, 255, 0.1);
+}
+
+/* Warning message */
+.stWarning {
+    border-left-color: #ff9900;
+    background: rgba(255, 153, 0, 0.1);
+}
+
+/* Error message */
+.stError {
+    border-left-color: #ff3333;
+    background: rgba(255, 51, 51, 0.1);
+}
