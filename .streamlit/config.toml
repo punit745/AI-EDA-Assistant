@@ -10,6 +10,15 @@ base = "dark"
 headless = true
 port = 8501
 enableXsrfProtection = true
+maxUploadSize = 200
+enableCORS = false
 
 [browser]
 gatherUsageStats = false
+
+[runner]
+magicEnabled = true
+fastReruns = true
+
+[client]
+showErrorDetails = true

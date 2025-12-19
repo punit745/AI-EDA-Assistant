@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-An intelligent, AI-driven Python application for automated Exploratory Data Analysis (EDA) and data preprocessing. This tool provides an intuitive interface for data scientists and analysts to perform comprehensive data analysis, visualization, and preprocessing tasks with minimal effort.
+An intelligent, AI-driven Python application for automated Exploratory Data Analysis (EDA) and data preprocessing with AI-powered insights, theme customization, and multi-file analysis capabilities.
 
 ---
 
@@ -22,27 +22,51 @@ An intelligent, AI-driven Python application for automated Exploratory Data Anal
 
 ## 🌟 Features
 
+### 🎨 **NEW: Theme Customization**
+- **Dark/Light Mode Toggle**: Switch between professional dark and light themes
+- **Minimalist Design**: Clean, elegant interface following modern design principles
+- **Responsive Layout**: Works seamlessly across desktop, tablet, and mobile devices
+
+### 🤖 **NEW: AI-Powered Insights**
+- **Data Health Scoring**: Comprehensive data quality assessment with grading system
+- **Smart Recommendations**: Automated suggestions for data preprocessing
+- **Correlation Insights**: Intelligent analysis of feature relationships
+- **Feature Importance Hints**: Automatic detection of high-value features
+- **Chart Recommendations**: AI-suggested visualizations based on data types
+- **Automated Insights**: Context-aware explanations for all visualizations
+
+### 📂 **NEW: Multi-File Analysis**
+- **Upload Multiple Datasets**: Compare and analyze multiple files simultaneously
+- **Schema Comparison**: Side-by-side comparison of dataset structures
+- **Relationship Detection**: Automatic identification of join opportunities
+- **Merge & Join**: Intelligent data merging with visual guidance
+- **Aggregation Analysis**: Cross-dataset aggregation and analysis
+- **Comparative Visualizations**: Compare metrics across multiple datasets
+
 ### 1. **Multi-Format Data Support**
 - Upload and parse multiple file formats: `.csv`, `.xlsx`, `.json`, `.txt`
 - Automatic DataFrame conversion for standardized operations
 - Smart delimiter detection for text files
+- Support for single or multiple file uploads
 
 ### 2. **Interactive Web Interface**
 - Built with Streamlit for an intuitive user experience
 - Responsive design with organized navigation
 - Real-time feedback and progress indicators
+- Smooth animations and transitions
 
 ### 3. **Automated Exploratory Data Analysis**
 - **Dataset Overview**: Size, columns, data types, missing values
 - **Statistical Summaries**: Mean, median, std dev, skewness, kurtosis
-- **Visualizations**: 
+- **Interactive Visualizations**: 
   - Histograms for distribution analysis
   - Box plots for outlier detection
-  - Correlation heatmaps
+  - Correlation heatmaps with insights
   - Scatter matrices for feature relationships
   - Missing value visualizations
+- **Automated Insights**: AI-generated explanations for visualizations
 
-### 4. **Advanced Statistical Analysis Suite** ⭐ NEW
+### 4. **Advanced Statistical Analysis Suite**
 - **Descriptive Statistics**: 
   - Comprehensive metrics: mean, median, mode, min, max, std, variance
   - Skewness, kurtosis, quantiles, IQR, coefficient of variation
@@ -72,6 +96,7 @@ An intelligent, AI-driven Python application for automated Exploratory Data Anal
 - **Missing Value Handling**:
   - Fill with mean, median, or mode
   - Remove rows or columns with missing data
+  - AI-recommended strategies
 - **Outlier Detection & Handling**:
   - Z-score method
   - IQR (Interquartile Range) method
@@ -88,7 +113,7 @@ An intelligent, AI-driven Python application for automated Exploratory Data Anal
 - Numerical data validation (infinites, negatives, zeros)
 - Categorical data consistency checks
 
-### 7. **Expanded Machine Learning Models** ⭐ NEW
+### 7. **Expanded Machine Learning Models**
 - **Regression Models**:
   - Linear Regression
   - Ridge Regression (L2 regularization)
@@ -131,7 +156,26 @@ An intelligent, AI-driven Python application for automated Exploratory Data Anal
   - Statistical summaries
   - Operations log
 
-## 🚀 Installation
+### 9. **Performance Optimization**
+- **Caching**: Intelligent caching for faster repeated operations
+- **Lazy Loading**: Efficient memory management for large datasets
+- **Optimized Computations**: Fast algorithms for statistical operations
+- **Configurable Limits**: Adjustable upload size (up to 200MB)
+
+---
+
+## 🎯 What's New in This Version
+
+### Major Enhancements:
+
+1. **🎨 Theme Toggle**: Switch between dark and light professional themes
+2. **🤖 AI Insights**: Automated data health scoring and smart recommendations
+3. **📂 Multi-File Analysis**: Compare and merge multiple datasets
+4. **💡 Smart Recommendations**: AI-powered preprocessing suggestions
+5. **📊 Enhanced Visualizations**: Interactive Plotly charts with automated insights
+6. **⚡ Performance**: Caching and optimization for faster operations
+
+---
 
 > **📖 For detailed setup instructions, see [SETUP_GUIDE.md](SETUP_GUIDE.md)**
 
@@ -193,43 +237,60 @@ streamlit run app.py
 
 ### Workflow
 
-1. **📊 Dataset Overview**: 
+1. **🏠 Home**: 
+   - Learn about the application features
+   - Understand the workflow
+
+2. **📊 Dataset Overview**: 
    - View basic statistics and data preview
    - Understand column types and missing values
 
-2. **🔍 Automated EDA**:
+3. **🤖 AI Insights** ⭐ NEW:
+   - Get data health score and recommendations
+   - View correlation insights
+   - Receive smart preprocessing suggestions
+   - Get chart recommendations
+
+4. **🔍 Automated EDA**:
    - Generate statistical summaries
-   - Create interactive visualizations
+   - Create interactive visualizations with insights
    - Analyze distributions and correlations
 
-3. **📈 Statistical Analysis** ⭐ NEW:
+5. **📈 Statistical Analysis**:
    - Perform descriptive statistics
    - Run inferential tests (t-tests, ANOVA, chi-square)
    - Analyze correlations and causality
    - Conduct time series analysis
    - Fit probability distributions
 
-4. **🧹 Preprocessing**:
+6. **🧹 Preprocessing**:
    - Handle missing values
    - Detect and manage outliers
    - Normalize or scale features
 
-5. **✅ Data Integrity**:
+7. **✅ Data Integrity**:
    - Check for duplicates
    - Validate data types
    - Ensure data consistency
 
-6. **🤖 Model Training** ⭐ ENHANCED:
+8. **🎯 Model Training**:
    - Select multiple models for comparison
    - Train regression, classification, gradient boosting, or time series models
    - Fine-tune hyperparameters
    - Compare model performance
    - Visualize feature importance
 
-7. **💾 Export & Reports**:
-   - Download processed datasets
-   - Generate Python scripts (including new models)
-   - Create PDF reports
+9. **📂 Multi-File Analysis** ⭐ NEW:
+   - Upload multiple datasets
+   - Compare schemas and statistics
+   - Detect potential relationships
+   - Merge and join datasets
+   - Perform aggregation analysis
+
+10. **💾 Export & Reports**:
+    - Download processed datasets
+    - Generate Python scripts (including new models)
+    - Create PDF reports
 
 ## 📦 Project Structure
 
@@ -238,14 +299,21 @@ AI-EDA-Assistant/
 ├── app.py                      # Main Streamlit application
 ├── data_handler.py             # File upload and parsing module
 ├── eda.py                      # EDA functionality and visualizations
-├── statistical_analysis.py     # Advanced statistical analysis ⭐ NEW
+├── statistical_analysis.py     # Advanced statistical analysis
+├── ai_insights.py              # AI-powered insights and recommendations ⭐ NEW
+├── multi_file_analyzer.py      # Multi-file analysis module ⭐ NEW
 ├── preprocessing.py            # Data preprocessing operations
 ├── data_integrity.py           # Data validation and integrity checks
-├── model_training.py           # ML model training (expanded) ⭐ ENHANCED
-├── code_generator.py           # Python code generation (updated)
+├── model_training.py           # ML model training (expanded)
+├── code_generator.py           # Python code generation
 ├── report_generator.py         # PDF report generation
+├── cache_utils.py              # Caching utilities for performance ⭐ NEW
 ├── utils.py                    # Utility functions
+├── style.css                   # Dark theme CSS
+├── style_light.css             # Light theme CSS ⭐ NEW
 ├── requirements.txt            # Project dependencies (updated)
+├── .streamlit/
+│   └── config.toml            # Streamlit configuration (enhanced)
 ├── .gitignore                 # Git ignore file
 └── README.md                  # Project documentation
 ```
@@ -264,15 +332,19 @@ AI-EDA-Assistant/
 
 ## 📊 Example Use Cases
 
-1. **Data Quality Assessment**: Upload a dataset to quickly identify missing values, duplicates, and data type issues
+1. **Data Quality Assessment**: Upload datasets to get AI-powered health scores and recommendations
 
-2. **Feature Engineering**: Normalize features, handle outliers, and prepare data for machine learning
+2. **Multi-Dataset Comparison**: Compare sales data across regions or time periods
 
-3. **Quick Model Prototyping**: Train and evaluate basic models without writing code
+3. **Feature Engineering**: Get smart preprocessing suggestions and implement them with one click
 
-4. **Report Generation**: Create professional PDF reports for stakeholders
+4. **Quick Model Prototyping**: Train and compare multiple models simultaneously
 
-5. **Code Reproducibility**: Export Python scripts to reproduce analysis in production environments
+5. **Report Generation**: Create professional PDF reports with automated insights for stakeholders
+
+6. **Code Reproducibility**: Export Python scripts to reproduce analysis in production environments
+
+7. **Data Merging**: Intelligently merge customer and transaction data with relationship detection
 
 ## 🌐 Deployment
 
