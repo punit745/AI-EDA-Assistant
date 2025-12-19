@@ -5,7 +5,7 @@ Provides intelligent data analysis and automated insights generation.
 
 import pandas as pd
 import numpy as np
-from typing import Dict, List, Optional
+from typing import Dict, List, Optional, Union
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -167,12 +167,14 @@ class AIInsights:
         
         # High variance features
         for col in numeric_cols:
-            cv = self.df[col].std() / self.df[col].mean() if self.df[col].mean() != 0 else 0
-            if cv > 0.5:
-                hints['high_variance_features'].append({
-                    'column': col,
-                    'coefficient_of_variation': round(cv, 2)
-                })
+            mean_val = self.df[col].mean()
+            if abs(mean_val) > 1e-10:  # Avoid division by very small numbers
+                cv = self.df[col].std() / mean_val
+                if cv > 0.5:
+                    hints['high_variance_features'].append({
+                        'column': col,
+                        'coefficient_of_variation': round(cv, 2)
+                    })
         
         # Low cardinality categorical features (good for classification)
         for col in categorical_cols:
@@ -270,7 +272,7 @@ class AIInsights:
         
         return suggestions
     
-    def generate_chart_insights(self, chart_type: str, data: pd.Series or pd.DataFrame) -> str:
+    def generate_chart_insights(self, chart_type: str, data: Union[pd.Series, pd.DataFrame]) -> str:
         """
         Generate automatic insights for charts.
         

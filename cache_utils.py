@@ -79,7 +79,7 @@ def cache_info():
     try:
         cache_stats = st.cache_data.get_stats()
         return cache_stats
-    except (AttributeError, Exception) as e:
+    except Exception as e:
         return "Cache statistics not available"
 
 

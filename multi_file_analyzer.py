@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objects as go
 import plotly.express as px
-from typing import Dict, List, Tuple, Optional
+from typing import Dict, List, Tuple, Optional, Union
 
 
 class MultiFileAnalyzer:
@@ -95,8 +95,10 @@ class MultiFileAnalyzer:
         Returns:
             Merged DataFrame
         """
-        if dataset1 not in self.datasets or dataset2 not in self.datasets:
-            raise ValueError("Dataset not found")
+        if dataset1 not in self.datasets:
+            raise ValueError(f"Dataset '{dataset1}' not found")
+        if dataset2 not in self.datasets:
+            raise ValueError(f"Dataset '{dataset2}' not found")
         
         df1 = self.datasets[dataset1]
         df2 = self.datasets[dataset2]
@@ -135,11 +137,14 @@ class MultiFileAnalyzer:
                         'unique': col_data.nunique()
                     }
                 else:
+                    mode_values = col_data.mode()
+                    value_counts = col_data.value_counts()
+                    
                     stats[name] = {
                         'unique': col_data.nunique(),
                         'missing': col_data.isnull().sum(),
-                        'mode': col_data.mode()[0] if len(col_data.mode()) > 0 else None,
-                        'top_value': col_data.value_counts().index[0] if len(col_data.value_counts()) > 0 else None
+                        'mode': mode_values[0] if len(mode_values) > 0 else None,
+                        'top_value': value_counts.index[0] if len(value_counts) > 0 else None
                     }
         
         return pd.DataFrame(stats).T
