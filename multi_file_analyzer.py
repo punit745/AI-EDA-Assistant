@@ -260,16 +260,18 @@ class MultiFileAnalyzer:
                     overlap = len(set(df1[col].unique()) & set(df2[col].unique()))
                     
                     if overlap > 0:
-                        overlap_pct = (overlap / max(unique1, unique2)) * 100
-                        
-                        relationships.append({
-                            'dataset1': name1,
-                            'dataset2': name2,
-                            'join_column': col,
-                            'overlap_percentage': round(overlap_pct, 2),
-                            'common_values': overlap,
-                            'recommendation': 'Strong join candidate' if overlap_pct > 50 else 'Possible join'
-                        })
+                        max_unique = max(unique1, unique2)
+                        if max_unique > 0:
+                            overlap_pct = (overlap / max_unique) * 100
+                            
+                            relationships.append({
+                                'dataset1': name1,
+                                'dataset2': name2,
+                                'join_column': col,
+                                'overlap_percentage': round(overlap_pct, 2),
+                                'common_values': overlap,
+                                'recommendation': 'Strong join candidate' if overlap_pct > 50 else 'Possible join'
+                            })
         
         return sorted(relationships, key=lambda x: x['overlap_percentage'], reverse=True)
     

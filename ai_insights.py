@@ -168,8 +168,11 @@ class AIInsights:
         # High variance features
         for col in numeric_cols:
             mean_val = self.df[col].mean()
-            if abs(mean_val) > 1e-10:  # Avoid division by very small numbers
-                cv = self.df[col].std() / mean_val
+            std_val = self.df[col].std()
+            
+            # Skip if mean is too small or std is NaN/inf
+            if abs(mean_val) > 1e-10 and pd.notna(std_val) and np.isfinite(std_val):
+                cv = std_val / mean_val
                 if cv > 0.5:
                     hints['high_variance_features'].append({
                         'column': col,
@@ -259,8 +262,19 @@ class AIInsights:
             means = self.df[numeric_cols].mean()
             stds = self.df[numeric_cols].std()
             
-            if means.max() / (means.min() + 1e-10) > 10 or stds.max() / (stds.min() + 1e-10) > 10:
-                scales_vary = True
+            # Filter out NaN and infinite values
+            means_valid = means[pd.notna(means) & np.isfinite(means)]
+            stds_valid = stds[pd.notna(stds) & np.isfinite(stds)]
+            
+            if len(means_valid) > 1 and len(stds_valid) > 1:
+                mean_min = means_valid.min()
+                mean_max = means_valid.max()
+                std_min = stds_valid.min()
+                std_max = stds_valid.max()
+                
+                if (mean_min > 1e-10 and mean_max / mean_min > 10) or \
+                   (std_min > 1e-10 and std_max / std_min > 10):
+                    scales_vary = True
             
             if scales_vary:
                 suggestions.append({
