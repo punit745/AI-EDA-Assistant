@@ -257,6 +257,10 @@ class MultiFileAnalyzer:
                     unique1 = df1[col].nunique()
                     unique2 = df2[col].nunique()
                     
+                    # Skip if both datasets have no unique values
+                    if unique1 == 0 and unique2 == 0:
+                        continue
+                    
                     overlap = len(set(df1[col].unique()) & set(df2[col].unique()))
                     
                     if overlap > 0:

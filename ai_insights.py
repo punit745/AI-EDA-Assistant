@@ -170,8 +170,8 @@ class AIInsights:
             mean_val = self.df[col].mean()
             std_val = self.df[col].std()
             
-            # Skip if mean is too small or std is NaN/inf
-            if abs(mean_val) > 1e-10 and pd.notna(std_val) and np.isfinite(std_val):
+            # Skip if mean is too small or std is NaN/inf - use larger epsilon for robustness
+            if abs(mean_val) > 1e-6 and pd.notna(std_val) and np.isfinite(std_val):
                 cv = std_val / mean_val
                 if cv > 0.5:
                     hints['high_variance_features'].append({
@@ -272,8 +272,9 @@ class AIInsights:
                 std_min = stds_valid.min()
                 std_max = stds_valid.max()
                 
-                if (mean_min > 1e-10 and mean_max / mean_min > 10) or \
-                   (std_min > 1e-10 and std_max / std_min > 10):
+                # Use larger epsilon for robustness
+                if (mean_min > 1e-6 and mean_max / mean_min > 10) or \
+                   (std_min > 1e-6 and std_max / std_min > 10):
                     scales_vary = True
             
             if scales_vary:
